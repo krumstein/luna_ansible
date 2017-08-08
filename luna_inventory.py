@@ -52,6 +52,8 @@ class LunaInventory(object):
             else:
                 inventory[group] = {'hosts':[node.show()['name']]}
             inventory['_meta']['hostvars'][node.show()['name']]={"bmc_ip":node.get_ip('BMC',version=4)}
+            inventory['_meta']['hostvars'][node.show()['name']]["ansible_host"]=node.get_ip('BOOTIF',version=4)
+
         return inventory
     # Empty inventory for testing.
     def empty_inventory(self):

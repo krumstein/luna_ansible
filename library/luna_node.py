@@ -58,7 +58,7 @@ def luna_node_present(data):
 
     if (data['mac'] is not None
             and node.get_mac != data['mac']):
-        ret &= node.set_mac(data['mac'])
+        ret &= node.set_mac(str(data['mac']))
         if not ret:
            return True, changed, "could not change mac "+data['mac']
 
